@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\User_menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Users;
 
 class DashboardSalesController extends Controller
 {
@@ -38,7 +39,9 @@ class DashboardSalesController extends Controller
         // dd($data['komisi']);
         $data['komisis'] = Data_komisi::orderBy('id', 'desc')->get();
 
-        return view('sales.dashboard', $data);
+        $account=Users::all();
+
+        return view('sales.dashboard', compact('data', 'account'));
 
     }
     public function komisi($dari, $ke)

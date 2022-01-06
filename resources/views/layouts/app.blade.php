@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User_role;
 $role = AUTH::User()->user_role_id;
 $roleid = User_role::find($role);
+$user = AUTH::User();
 @endphp
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ $roleid = User_role::find($role);
     <meta name="description" content="UD CIPTA INDAH">
     <meta name="keywords" content="UD, bangunan, cirebon">
     <meta name="author" content="Sunset Orange">
-    <title>{{ $title }}</title>
+    <title>{{ $title ?? '' }}</title>
     <link rel="apple-touch-icon" href="{{ asset('/images/logo/logosmk.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/images/logo/logosmk.png') }}">
 
@@ -123,7 +124,7 @@ $roleid = User_role::find($role);
                 @foreach ($menu as $m)
 
                     {{-- menu 1 --}}
-                    @if ($title == $m->title)
+                    @if ($title ?? '' == $m->title)
                         <li class="active nav-item">
                         @else
                         <li class=" nav-item">

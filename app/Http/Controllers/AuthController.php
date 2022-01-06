@@ -165,7 +165,7 @@ class AuthController extends Controller
         $user->save();
         $data = ['nama' => $request->name, 'token' => $verfy, 'email' => $request->email];
         $email = $request->email;
-        //$kirim = Mail::to($email)->send(new RSUD_Gunung_jati_Cirebon($data));
+        $kirim = Mail::to($email)->send(new RSUD_Gunung_jati_Cirebon($data));
         $request->session()->flash('warna', 'success');
         $request->session()->flash('status', 'Account registration is successful, please check your email to confirm that it is you!');
         return redirect('/login');

@@ -39,7 +39,9 @@ class DashboardController extends Controller
             ->groupBy(\DB::raw("Month(created_at)"))
             ->pluck('count');
 
-        return view('admin.dashboard.dashboard', $data);
+            $account=Users::all();
+
+        return view('admin.dashboard.dashboard', compact ('account', 'data'));
 
     }
 
